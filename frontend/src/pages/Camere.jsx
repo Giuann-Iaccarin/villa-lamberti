@@ -77,18 +77,16 @@ export default function Camere() {
           {rooms.map(({ slug, photoId, scene, badge, name, price, desc, detail, amenities }, i) => (
             <div
               key={name}
-              className={`reveal grid lg:grid-cols-2 gap-14 items-center ${i < rooms.length - 1 ? 'pb-20 mb-20' : ''}`}
+              className={`reveal grid lg:grid-cols-2 gap-16 items-center ${i < rooms.length - 1 ? 'pb-28 mb-28' : ''}`}
               style={i < rooms.length - 1 ? { borderBottom: '1px solid var(--c-border)' } : {}}
             >
               {/* Photo */}
               <div className={`relative rounded-2xl overflow-hidden ${i % 2 === 1 ? 'lg:order-2' : ''}`}
-                style={{ height: 500, boxShadow: 'var(--shadow-lg)' }}>
+                style={{ height: 520, boxShadow: 'var(--shadow-lg)' }}>
                 <Photo id={photoId} alt={name} scene={scene} />
-                {/* Badge overlay */}
                 <span className="pill absolute top-5 left-5" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', color: 'var(--c-ocean)', fontWeight: 600 }}>
                   {badge}
                 </span>
-                {/* Price overlay */}
                 <div style={{ position: 'absolute', bottom: 20, right: 20, background: 'rgba(14,29,40,0.82)', backdropFilter: 'blur(8px)', borderRadius: 'var(--r-md)', padding: '8px 16px' }}>
                   <p style={{ fontFamily: 'var(--ff-display)', fontSize: '1.1rem', fontWeight: 400, color: '#fff', lineHeight: 1 }}>{price}</p>
                 </div>
@@ -96,24 +94,24 @@ export default function Camere() {
 
               {/* Content */}
               <div className={i % 2 === 1 ? 'lg:order-1' : ''}>
-                <p className="label mb-3">{badge}</p>
-                <h2 className="display-lg" style={{ color: 'var(--c-text)', marginBottom: 4 }}>{name}</h2>
+                <p className="label" style={{ marginBottom: 14 }}>{badge}</p>
+                <h2 className="display-lg" style={{ color: 'var(--c-text)', marginBottom: 16 }}>{name}</h2>
                 <span className="rule" />
-                <p className="body-lg mt-5">{desc}</p>
-                <p className="mt-3 mb-8" style={{ fontFamily: 'var(--ff-display)', fontStyle: 'italic', color: 'var(--c-ocean)', fontSize: '1.1rem', lineHeight: 1.6 }}>
+                <p className="body-lg" style={{ marginTop: 28, marginBottom: 12 }}>{desc}</p>
+                <p style={{ fontFamily: 'var(--ff-display)', fontStyle: 'italic', color: 'var(--c-ocean)', fontSize: '1.1rem', lineHeight: 1.7, marginBottom: 36 }}>
                   {detail}
                 </p>
 
                 {/* Amenities con icone */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 16px', marginBottom: 32 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 20px', marginBottom: 40 }}>
                   {amenities.map(({ icon, label }) => (
-                    <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <div style={{ width: 32, height: 32, borderRadius: 'var(--r-sm)', background: 'var(--c-ocean-l)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-ocean)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                      <div style={{ width: 36, height: 36, borderRadius: 'var(--r-sm)', background: 'var(--c-ocean-l)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--c-ocean)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                           <path d={icon} />
                         </svg>
                       </div>
-                      <span style={{ fontSize: '0.82rem', fontWeight: 500, color: 'var(--c-text)' }}>{label}</span>
+                      <span style={{ fontSize: '0.84rem', fontWeight: 500, color: 'var(--c-text)' }}>{label}</span>
                     </div>
                   ))}
                 </div>
