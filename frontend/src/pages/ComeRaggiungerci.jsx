@@ -53,7 +53,7 @@ export default function ComeRaggiungerci() {
         scene="scene-sea"
       />
 
-      <section className="section" style={{ background: '#fff' }}>
+      <section className="section--sm" style={{ background: '#fff' }}>
         <div className="container">
 
           {/* Parcheggio highlight */}
@@ -99,7 +99,7 @@ export default function ComeRaggiungerci() {
           </div>
 
           {/* Map */}
-          <div className="reveal rounded-2xl overflow-hidden mb-20" style={{ height: 480, boxShadow: 'var(--shadow-lg)' }}>
+          <div className="reveal rounded-2xl overflow-hidden" style={{ height: 480, boxShadow: 'var(--shadow-lg)', marginBottom: 56 }}>
             <iframe
               title="Mappa Villa Lamberti"
               src="https://maps.google.com/maps?q=Villa+Lamberti,+Monte+di+Procida,+NA&output=embed&zoom=17&hl=it"
@@ -128,7 +128,7 @@ export default function ComeRaggiungerci() {
       </section>
 
       {/* CTA */}
-      <section className="section--sm section--bg">
+      <section className="section--xs section--bg">
         <div className="container--narrow text-center reveal">
           <p className="label mb-4">Hai trovato tutto?</p>
           <h2 className="display-lg" style={{ color: 'var(--c-text)', marginBottom: 12 }}>Prenota il tuo soggiorno</h2>
