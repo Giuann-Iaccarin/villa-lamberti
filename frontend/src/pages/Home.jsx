@@ -337,7 +337,7 @@ export default function Home() {
             <div className="reveal d2 rounded-lg overflow-hidden" style={{ height: 440, boxShadow: 'var(--shadow-lg)' }}>
               <iframe
                 title="Mappa Villa Lamberti"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12199.27!2d14.0567!3d40.7889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b09ee1e7a2f43%3A0x1d9cf3f0f3e5e8e2!2sMonte%20di%20Procida%2C%20NA!5e0!3m2!1sit!2sit!4v1"
+                src="https://maps.google.com/maps?q=Villa+Lamberti,+Monte+di+Procida,+NA&output=embed&zoom=17&hl=it"
                 className="w-full h-full border-0"
                 allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
               />
