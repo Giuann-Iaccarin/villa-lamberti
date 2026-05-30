@@ -57,7 +57,7 @@ export default function ComeRaggiungerci() {
         <div className="container">
 
           {/* Parcheggio highlight */}
-          <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '24px 28px', borderRadius: 'var(--r-lg)', background: 'var(--c-ocean-l)', border: '1px solid rgba(30,91,122,0.12)', marginBottom: 80 }}>
+          <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '20px 24px', borderRadius: 'var(--r-lg)', background: 'var(--c-ocean-l)', border: '1px solid rgba(30,91,122,0.12)', marginBottom: 56 }}>
             <div className="icon-box" style={{ flexShrink: 0 }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -71,10 +71,10 @@ export default function ComeRaggiungerci() {
           </div>
 
           {/* Transport cards */}
-          <div className="grid md:grid-cols-3 gap-8 mb-24 reveal">
+          <div className="grid md:grid-cols-3 gap-5 mb-16 reveal">
             {methods.map(({ n, title, icon, steps }) => (
-              <div key={n} className="card card--accent" style={{ padding: '36px 32px 40px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32 }}>
+              <div key={n} className="card card--accent" style={{ padding: '28px 28px 32px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
                   <div className="icon-box">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                       <path d={icon}/>
@@ -82,13 +82,13 @@ export default function ComeRaggiungerci() {
                   </div>
                   <span style={{ fontFamily: 'var(--ff-body)', fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.2em', color: 'var(--c-muted)' }}>{n}</span>
                 </div>
-                <h3 className="display-sm" style={{ color: 'var(--c-text)', marginBottom: 28 }}>{title}</h3>
-                <ul className="flex flex-col gap-6">
+                <h3 className="display-sm" style={{ color: 'var(--c-text)', marginBottom: 20 }}>{title}</h3>
+                <ul className="flex flex-col gap-4">
                   {steps.map(({ t, d }) => (
-                    <li key={t} style={{ display: 'flex', gap: 12 }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--c-gold)', flexShrink: 0, marginTop: 8 }} />
+                    <li key={t} style={{ display: 'flex', gap: 10 }}>
+                      <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--c-gold)', flexShrink: 0, marginTop: 7 }} />
                       <div>
-                        <p style={{ fontWeight: 700, fontSize: '0.8rem', color: 'var(--c-text)', marginBottom: 4 }}>{t}</p>
+                        <p style={{ fontWeight: 700, fontSize: '0.78rem', color: 'var(--c-text)', marginBottom: 2 }}>{t}</p>
                         <p className="body-sm">{d}</p>
                       </div>
                     </li>
@@ -99,7 +99,7 @@ export default function ComeRaggiungerci() {
           </div>
 
           {/* Map */}
-          <div className="reveal rounded-2xl overflow-hidden mb-20" style={{ height: 480, boxShadow: 'var(--shadow-lg)' }}>
+          <div className="reveal rounded-2xl overflow-hidden mb-14" style={{ height: 480, boxShadow: 'var(--shadow-lg)' }}>
             <iframe
               title="Mappa Villa Lamberti"
               src="https://maps.google.com/maps?q=Villa+Lamberti,+Monte+di+Procida,+NA&output=embed&zoom=17&hl=it"
@@ -109,9 +109,9 @@ export default function ComeRaggiungerci() {
           </div>
 
           {/* Info cards */}
-          <div className="reveal grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="reveal grid sm:grid-cols-2 md:grid-cols-4 gap-4">
             {infoItems.map(({ icon, label, value }) => (
-              <div key={label} className="card" style={{ padding: '28px 24px', display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+              <div key={label} className="card" style={{ padding: '22px 20px', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                 <div className="icon-box" style={{ flexShrink: 0 }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                     <path d={icon}/>
