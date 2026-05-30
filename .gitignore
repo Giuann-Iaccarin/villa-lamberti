@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Backend build artifacts
+backend/target/
+
+# Frontend build output (deployed via CI)
+frontend/dist/
+
+# Node
+frontend/node_modules/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Env / secrets
+*.env
+application-local.yml
+application-secret.yml
