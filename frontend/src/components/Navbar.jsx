@@ -13,6 +13,10 @@ export default function Navbar() {
   const [open,     setOpen]     = useState(false)
   const { pathname } = useLocation()
 
+  // Pages without a dark hero need permanently-dark navbar
+  const HERO_PATHS = ['/', '/camere', '/territorio', '/colazione', '/come-raggiungerci', '/contatti']
+  const forceLight = !HERO_PATHS.includes(pathname)
+
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', fn, { passive: true })
@@ -24,7 +28,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
+      <nav className={`nav ${scrolled || forceLight ? 'nav--scrolled' : ''}`}>
         <div className="container flex items-center justify-between">
           <Link to="/" className="flex flex-col leading-none">
             <span className="nav__logo-name">Villa Lamberti</span>
@@ -41,8 +45,8 @@ export default function Navbar() {
                 {label}
               </Link>
             ))}
-            <Link to="/contatti" className="btn btn--ocean" style={{ padding: '10px 24px', fontSize: '0.75rem' }}>
-              Prenota
+            <Link to="/prenota" className="btn btn--ocean" style={{ padding: '10px 24px', fontSize: '0.75rem' }}>
+              Prenota ora
             </Link>
           </div>
 
@@ -52,11 +56,11 @@ export default function Navbar() {
             aria-label="Apri menu"
           >
             <span className="block w-6 h-px rounded-full transition-colors duration-300"
-              style={{ background: scrolled ? 'var(--c-text)' : '#fff' }} />
+              style={{ background: scrolled || forceLight ? 'var(--c-text)' : '#fff' }} />
             <span className="block w-6 h-px rounded-full transition-colors duration-300"
-              style={{ background: scrolled ? 'var(--c-text)' : '#fff' }} />
+              style={{ background: scrolled || forceLight ? 'var(--c-text)' : '#fff' }} />
             <span className="block w-4 h-px rounded-full transition-colors duration-300"
-              style={{ background: scrolled ? 'var(--c-text)' : '#fff' }} />
+              style={{ background: scrolled || forceLight ? 'var(--c-text)' : '#fff' }} />
           </button>
         </div>
       </nav>
@@ -97,10 +101,13 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="container mt-auto mb-10">
+        <div className="container mt-auto mb-10 flex gap-3 flex-wrap">
+          <Link to="/prenota" className="btn btn--ocean">
+            Prenota ora
+          </Link>
           <a href="https://wa.me/393331234567" target="_blank" rel="noopener noreferrer"
             className="btn btn--wa">
-            Scrivici su WhatsApp
+            WhatsApp
           </a>
         </div>
       </div>

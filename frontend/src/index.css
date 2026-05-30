@@ -224,12 +224,60 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 ───────────────────────────────────────── */
 .card {
   background: var(--c-white);
-  border-radius: var(--r-md);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--c-border);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 16px rgba(30,35,30,0.07);
+  transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1);
 }
-.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.card:hover {
+  box-shadow: 0 20px 56px rgba(30,35,30,0.14);
+  transform: translateY(-6px);
+}
+
+/* Photo cards — no border, shadow only */
+.card--photo { border-color: transparent; }
+.card--photo:hover { border-color: transparent; }
+
+/* Fix double border-radius for .photo inside cards */
+.card .photo { border-radius: 0; }
+
+/* Gold top-border accent on hover — feature/transport cards */
+.card--accent {
+  border-top: 2px solid transparent;
+  transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1), border-top-color 0.35s ease;
+}
+.card--accent:hover { border-top-color: var(--c-gold); }
+
+/* Gold left-border accent — review cards */
+.card--review {
+  border-left: 3px solid var(--c-gold-l);
+  transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1), border-left-color 0.35s ease;
+}
+.card--review:hover { border-left-color: var(--c-gold); }
+
+/* Icon box for feature cards */
+.icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  background: var(--c-ocean-l);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-ocean);
+  flex-shrink: 0;
+  transition: background 0.35s ease;
+}
+.card:hover .icon-box { background: rgba(30,91,122,0.16); }
+
+/* Photo gradient overlay */
+.photo-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14,29,40,0.52) 0%, rgba(14,29,40,0.12) 42%, transparent 68%);
+  pointer-events: none;
+}
 
 /* ─────────────────────────────────────────
    PHOTO CONTAINERS
@@ -245,7 +293,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   display: block;
   transition: transform 0.6s ease;
 }
-.photo:hover img { transform: scale(1.03); }
+.photo:hover img { transform: scale(1.05); }
 
 /* ─────────────────────────────────────────
    PHOTO FALLBACK SCENES (CSS art)
@@ -417,10 +465,142 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* ─────────────────────────────────────────
    RESPONSIVE HELPERS
 ───────────────────────────────────────── */
+/* 2-col grid that collapses to 1 col on mobile */
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* About section photo composition */
+.about-photo-panel { height: 560px; }
+.about-small-photo {}
+.about-year-badge  {}
+
 @media (max-width: 768px) {
-  .section     { padding: var(--sp-10) 0; }
-  .section--sm { padding: var(--sp-8)  0; }
-  .container   { padding: 0 var(--sp-3); }
+  .section          { padding: var(--sp-10) 0; }
+  .section--sm      { padding: var(--sp-8)  0; }
+  .container        { padding: 0 var(--sp-3); }
+  .container--narrow{ padding: 0 var(--sp-3); }
+  .about-photo-panel { height: 340px; }
+}
+
+@media (max-width: 640px) {
+  .grid-2-col        { grid-template-columns: 1fr; }
+  .about-photo-panel { height: 260px; }
+  .about-small-photo { display: none; }
+  .about-year-badge  { display: none; }
+}
+
+/* ─────────────────────────────────────────
+   BOOKING WIZARD
+───────────────────────────────────────── */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+.step-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--c-border);
+  background: var(--c-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--c-muted);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.step-dot--active {
+  border-color: var(--c-ocean);
+  background: var(--c-ocean);
+  color: #fff;
+}
+.step-dot--done {
+  border-color: var(--c-ocean);
+  background: var(--c-ocean);
+  color: #fff;
+}
+.step-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-left: 8px;
+  white-space: nowrap;
+}
+.step-label--active { color: var(--c-ocean); }
+.step-line {
+  width: 48px;
+  height: 1px;
+  background: var(--c-border);
+  margin: 0 10px;
+  transition: background 0.3s ease;
+}
+.step-line--done { background: var(--c-ocean); }
+
+/* Booking room selection cards */
+.booking-card {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--c-white);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+.booking-card:hover {
+  border-color: rgba(30,91,122,0.4);
+  box-shadow: 0 4px 20px rgba(30,35,30,0.08);
+}
+.booking-card--selected {
+  border-color: var(--c-ocean);
+  box-shadow: 0 0 0 3px rgba(30,91,122,0.1);
+}
+.booking-card__photo {
+  width: 140px;
+  height: 100px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.booking-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.booking-card__body {
+  flex: 1;
+  padding: 16px 20px;
+}
+.booking-card__check {
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .booking-card__photo { width: 88px; height: 72px; }
+  .booking-card__body  { padding: 12px 14px; }
+  .booking-card__check { padding: 0 12px; }
+  .step-label { display: none; }
+  .step-line  { width: 24px; margin: 0 6px; }
+  .prenota-card { padding: 24px 18px !important; }
 }
 
 /* ─────────────────────────────────────────

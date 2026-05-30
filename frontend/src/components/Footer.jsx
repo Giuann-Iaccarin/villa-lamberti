@@ -98,10 +98,17 @@ export default function Footer() {
             <p className="label mb-5" style={{ color: 'rgba(255,255,255,0.25)' }}>Prenota</p>
             <ul className="flex flex-col gap-3 body-sm" style={{ color: 'rgba(255,255,255,0.45)' }}>
               <li>
-                <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer"
+                <Link to="/prenota"
                   onMouseEnter={e => e.currentTarget.style.color='var(--c-gold)'}
                   onMouseLeave={e => e.currentTarget.style.color='rgba(255,255,255,0.45)'}>
-                  Booking.com →
+                  Prenota direttamente →
+                </Link>
+              </li>
+              <li>
+                <a href="https://wa.me/393331234567" target="_blank" rel="noopener noreferrer"
+                  onMouseEnter={e => e.currentTarget.style.color='var(--c-gold)'}
+                  onMouseLeave={e => e.currentTarget.style.color='rgba(255,255,255,0.45)'}>
+                  WhatsApp →
                 </a>
               </li>
               <li>
@@ -109,13 +116,6 @@ export default function Footer() {
                   onMouseEnter={e => e.currentTarget.style.color='var(--c-gold)'}
                   onMouseLeave={e => e.currentTarget.style.color='rgba(255,255,255,0.45)'}>
                   Airbnb →
-                </a>
-              </li>
-              <li>
-                <a href="https://wa.me/393331234567" target="_blank" rel="noopener noreferrer"
-                  onMouseEnter={e => e.currentTarget.style.color='var(--c-gold)'}
-                  onMouseLeave={e => e.currentTarget.style.color='rgba(255,255,255,0.45)'}>
-                  WhatsApp →
                 </a>
               </li>
             </ul>

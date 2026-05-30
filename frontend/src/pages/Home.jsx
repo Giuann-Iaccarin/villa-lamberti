@@ -68,17 +68,20 @@ export default function Home() {
       {/* ══════════════════════════════════════
           INTRO NUMBERS
       ══════════════════════════════════════ */}
-      <section className="section--xs" style={{ background: '#fff', borderBottom: '1px solid var(--c-border)' }}>
+      <section style={{ background: '#fff', borderBottom: '1px solid var(--c-border)' }}>
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {[
               { num: '15+',    label: 'Anni di ospitalità' },
               { num: '3',      label: 'Camere con vista' },
               { num: '4.9 ★', label: 'Media recensioni' },
               { num: '10 min', label: 'Dal porto di Pozzuoli' },
-            ].map(({ num, label }) => (
-              <div key={label} className="reveal">
-                <p className="display-md" style={{ color: 'var(--c-ocean)', marginBottom: 4 }}>{num}</p>
+            ].map(({ num, label }, i) => (
+              <div key={label} className="reveal text-center" style={{
+                padding: '52px 32px',
+                borderRight: i < 3 ? '1px solid var(--c-border)' : 'none',
+              }}>
+                <p className="display-lg" style={{ color: 'var(--c-ocean)', marginBottom: 6 }}>{num}</p>
                 <p className="label label--muted">{label}</p>
               </div>
             ))}
@@ -94,17 +97,17 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             {/* Photos composition */}
-            <div className="reveal relative" style={{ height: 560 }}>
+            <div className="reveal relative about-photo-panel">
               <div className="photo absolute rounded-lg overflow-hidden"
                 style={{ inset: '0 60px 60px 0', boxShadow: 'var(--shadow-lg)' }}>
                 <Photo id={PHOTOS.about} alt="Terrazza di Villa Lamberti" scene="scene-interior" />
               </div>
-              <div className="photo absolute rounded-lg overflow-hidden border-4 border-white"
+              <div className="photo absolute rounded-lg overflow-hidden border-4 border-white about-small-photo"
                 style={{ width: 200, height: 200, bottom: 0, right: 0, boxShadow: 'var(--shadow-md)' }}>
                 <Photo id={PHOTOS.aboutSmall} alt="Colazione artigianale" scene="scene-golden" />
               </div>
               {/* Year badge */}
-              <div className="absolute rounded-lg flex flex-col items-center justify-center text-center"
+              <div className="absolute rounded-lg flex flex-col items-center justify-center text-center about-year-badge"
                 style={{ top: 24, left: -16, width: 90, height: 90, background: 'var(--c-gold)', boxShadow: '0 8px 24px rgba(184,148,74,0.35)' }}>
                 <span style={{ fontFamily: 'var(--ff-display)', fontSize: '1.7rem', fontWeight: 500, color: '#fff', lineHeight: 1 }}>
                   2008
@@ -163,34 +166,61 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
                 n: '01',
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 10 Q5 7 8 10 Q11 13 14 10 Q17 7 20 10 Q21.5 8.5 22 10"/>
+                    <path d="M2 16 Q5 13 8 16 Q11 19 14 16 Q17 13 20 16 Q21.5 14.5 22 16"/>
+                  </svg>
+                ),
                 title: 'Tranquillità vera',
                 body: 'Lontano dal turismo di massa. Silenzio, aria di mare, notti stellate sul Golfo.',
               },
               {
                 n: '02',
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                ),
                 title: 'Posizione strategica',
                 body: 'Procida a 15 min, Ischia a 20, Napoli a 30 min. Al centro di tutto.',
               },
               {
                 n: '03',
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 8h1a4 4 0 0 1 0 8h-1"/>
+                    <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/>
+                    <line x1="6" y1="1" x2="6" y2="4"/>
+                    <line x1="10" y1="1" x2="10" y2="4"/>
+                    <line x1="14" y1="1" x2="14" y2="4"/>
+                  </svg>
+                ),
                 title: 'Colazione artigianale',
                 body: 'Prodotti locali, dolci fatti in casa. Servita in terrazza con vista sul mare.',
               },
               {
                 n: '04',
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                  </svg>
+                ),
                 title: 'Ospitalità autentica',
                 body: 'Consigli veri, non brochure. Ti trattiamo come ospiti di casa nostra.',
               },
-            ].map(({ n, title, body }, i) => (
-              <div key={n} className={`reveal d${i + 1} card p-8`}>
-                <span style={{ fontFamily: 'var(--ff-display)', fontSize: '3.5rem', fontWeight: 300, color: 'var(--c-ocean)', opacity: 0.25, lineHeight: 1, display: 'block', marginBottom: 16 }}>
-                  {n}
-                </span>
-                <h3 className="display-sm" style={{ color: 'var(--c-text)', marginBottom: 10 }}>{title}</h3>
+            ].map(({ n, icon, title, body }, i) => (
+              <div key={n} className={`reveal d${i + 1} card card--accent`} style={{ padding: '28px 28px 32px' }}>
+                <div className="flex items-start justify-between" style={{ marginBottom: 24 }}>
+                  <div className="icon-box">{icon}</div>
+                  <span className="label label--muted">{n}</span>
+                </div>
+                <h3 className="display-sm" style={{ color: 'var(--c-text)', marginBottom: 8 }}>{title}</h3>
                 <p className="body-sm">{body}</p>
               </div>
             ))}
@@ -218,20 +248,26 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { photo: PHOTOS.room1, scene: 'scene-sea',      title: 'Camera Panoramica', badge: 'Vista Golfo',   desc: 'Terrazzino privato con vista diretta sul mare.' },
-              { photo: PHOTOS.room2, scene: 'scene-interior', title: 'Camera del Giardino', badge: 'Tranquilla', desc: 'Affacciata sul giardino fiorito. Silenziosa e raccolta.' },
-              { photo: PHOTOS.room3, scene: 'scene-interior', title: 'Suite Familiare',    badge: 'Fino a 4 ospiti', desc: 'Zona living separata, ideale per famiglie.' },
+              { photo: PHOTOS.room1, scene: 'scene-sea',      title: 'Camera Panoramica',   badge: 'Vista Golfo',     desc: 'Terrazzino privato con vista diretta sul mare.' },
+              { photo: PHOTOS.room2, scene: 'scene-interior', title: 'Camera del Giardino', badge: 'Tranquilla',      desc: 'Affacciata sul giardino fiorito. Silenziosa e raccolta.' },
+              { photo: PHOTOS.room3, scene: 'scene-interior', title: 'Suite Familiare',      badge: 'Fino a 4 ospiti', desc: 'Zona living separata, ideale per famiglie.' },
             ].map(({ photo, scene, title, badge, desc }, i) => (
-              <div key={title} className={`reveal d${i + 1} card group overflow-hidden`}>
-                <div className="photo overflow-hidden" style={{ height: 240 }}>
+              <div key={title} className={`reveal d${i + 1} card card--photo group overflow-hidden`}>
+                <div className="photo overflow-hidden relative" style={{ height: 280 }}>
                   <Photo id={photo} alt={title} scene={scene} />
+                  <div className="photo-gradient" />
+                  <span className="pill absolute bottom-4 left-4" style={{
+                    background: 'rgba(255,255,255,0.92)',
+                    backdropFilter: 'blur(10px)',
+                    color: 'var(--c-ocean)',
+                    fontWeight: 600,
+                    fontSize: '0.72rem',
+                    letterSpacing: '0.06em',
+                  }}>{badge}</span>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="display-sm" style={{ color: 'var(--c-text)' }}>{title}</h3>
-                    <span className="pill" style={{ flexShrink: 0, marginLeft: 8 }}>{badge}</span>
-                  </div>
-                  <p className="body-sm mb-5">{desc}</p>
+                <div style={{ padding: '20px 24px 28px' }}>
+                  <h3 className="display-sm" style={{ color: 'var(--c-text)', marginBottom: 6 }}>{title}</h3>
+                  <p className="body-sm" style={{ marginBottom: 20 }}>{desc}</p>
                   <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer"
                     className="btn-link text-sm">
                     Prenota
@@ -280,17 +316,19 @@ export default function Home() {
                 Monte di Procida è il punto di partenza ideale per esplorare il Golfo. Isole, vulcani, storia e pesce fresco — tutto a portata di traghetto o auto.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                 {[
                   { dest: 'Procida',  time: '15 min', via: 'traghetto' },
                   { dest: 'Ischia',   time: '20 min', via: 'traghetto' },
                   { dest: 'Napoli',   time: '30 min', via: 'auto · treno' },
                   { dest: 'Pozzuoli', time: '10 min', via: 'auto' },
                 ].map(({ dest, time, via }) => (
-                  <div key={dest} className="flex flex-col p-4 rounded-lg" style={{ background: 'var(--c-ocean-l)', gap: 2 }}>
-                    <p style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--c-text)' }}>{dest}</p>
-                    <p style={{ fontFamily: 'var(--ff-display)', fontSize: '1.4rem', fontWeight: 400, color: 'var(--c-ocean)', lineHeight: 1 }}>{time}</p>
-                    <p className="label label--muted">{via}</p>
+                  <div key={dest} className="card" style={{ background: 'var(--c-ocean-l)', border: '1px solid rgba(30,91,122,0.12)', padding: '18px 20px 20px' }}>
+                    <div className="flex items-center justify-between" style={{ marginBottom: 8 }}>
+                      <p style={{ fontWeight: 700, fontSize: '0.82rem', letterSpacing: '0.04em', color: 'var(--c-text)' }}>{dest}</p>
+                      <span className="label label--muted">{via}</span>
+                    </div>
+                    <p style={{ fontFamily: 'var(--ff-display)', fontSize: '1.9rem', fontWeight: 400, color: 'var(--c-ocean)', lineHeight: 1 }}>{time}</p>
                   </div>
                 ))}
               </div>
@@ -324,14 +362,42 @@ export default function Home() {
               { text: 'Accoglienza calorosa, camera pulitissima. I proprietari ci hanno dato consigli preziosi per visitare Procida — come avere un amico del posto.', name: 'Sophie & Luca', from: 'Parigi · Airbnb' },
               { text: 'Il B&B perfetto per scoprire il Golfo lontano dalla confusione. Ci sentiamo già di casa. Torneremo sicuramente.', name: 'Anna T.', from: 'Roma · Google' },
             ].map(({ text, name, from }, i) => (
-              <div key={name} className={`reveal d${i + 1} card p-8`}>
-                <div style={{ color: 'var(--c-gold)', letterSpacing: 4, marginBottom: 20, fontSize: '0.9rem' }}>★★★★★</div>
-                <p style={{ fontFamily: 'var(--ff-display)', fontStyle: 'italic', fontWeight: 400, fontSize: '1.05rem', lineHeight: 1.75, color: 'var(--c-text)', marginBottom: 20 }}>
+              <div key={name} className={`reveal d${i + 1} card card--review`} style={{ padding: '32px 28px 28px' }}>
+                {/* Stars */}
+                <div style={{ display: 'flex', gap: 3, marginBottom: 20 }}>
+                  {[...Array(5)].map((_, s) => (
+                    <svg key={s} width="13" height="13" viewBox="0 0 24 24" fill="var(--c-gold)">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  ))}
+                </div>
+                {/* Quote */}
+                <p style={{
+                  fontFamily: 'var(--ff-display)',
+                  fontStyle: 'italic',
+                  fontWeight: 400,
+                  fontSize: '1.08rem',
+                  lineHeight: 1.8,
+                  color: 'var(--c-text)',
+                  marginBottom: 24,
+                }}>
                   "{text}"
                 </p>
-                <div style={{ borderTop: '1px solid var(--c-border)', paddingTop: 16 }}>
-                  <p style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--c-text)' }}>{name}</p>
-                  <p className="body-sm">{from}</p>
+                {/* Author */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div style={{
+                    width: 36, height: 36, borderRadius: '50%',
+                    background: 'var(--c-ocean-l)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontFamily: 'var(--ff-display)', fontSize: '1rem', fontWeight: 500, color: 'var(--c-ocean)',
+                    flexShrink: 0,
+                  }}>
+                    {name.charAt(0)}
+                  </div>
+                  <div>
+                    <p style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--c-text)', lineHeight: 1.3 }}>{name}</p>
+                    <p className="body-sm" style={{ fontSize: '0.78rem' }}>{from}</p>
+                  </div>
                 </div>
               </div>
             ))}
