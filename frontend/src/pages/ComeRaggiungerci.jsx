@@ -71,7 +71,7 @@ export default function ComeRaggiungerci() {
           </div>
 
           {/* Transport cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-20 reveal">
+          <div className="grid md:grid-cols-3 gap-6 reveal" style={{ marginBottom: 56 }}>
             {methods.map(({ n, title, icon, steps }) => (
               <div key={n} className="card card--accent" style={{ padding: '28px 28px 32px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
@@ -109,7 +109,7 @@ export default function ComeRaggiungerci() {
           </div>
 
           {/* Info cards */}
-          <div className="reveal grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="reveal grid sm:grid-cols-2 md:grid-cols-4" style={{ gap: 16 }}>
             {infoItems.map(({ icon, label, value }) => (
               <div key={label} className="card" style={{ padding: '22px 20px', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                 <div className="icon-box" style={{ flexShrink: 0 }}>
