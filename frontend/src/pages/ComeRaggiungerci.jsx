@@ -57,7 +57,7 @@ export default function ComeRaggiungerci() {
         <div className="container">
 
           {/* Parcheggio highlight */}
-          <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '20px 24px', borderRadius: 'var(--r-lg)', background: 'var(--c-ocean-l)', border: '1px solid rgba(30,91,122,0.12)', marginBottom: 56 }}>
+          <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '20px 24px', borderRadius: 'var(--r-lg)', background: 'var(--c-ocean-l)', border: '1px solid rgba(30,91,122,0.12)', marginBottom: 72 }}>
             <div className="icon-box" style={{ flexShrink: 0 }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -71,7 +71,7 @@ export default function ComeRaggiungerci() {
           </div>
 
           {/* Transport cards */}
-          <div className="grid md:grid-cols-3 gap-5 mb-16 reveal">
+          <div className="grid md:grid-cols-3 gap-6 mb-20 reveal">
             {methods.map(({ n, title, icon, steps }) => (
               <div key={n} className="card card--accent" style={{ padding: '28px 28px 32px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
@@ -99,7 +99,7 @@ export default function ComeRaggiungerci() {
           </div>
 
           {/* Map */}
-          <div className="reveal rounded-2xl overflow-hidden mb-14" style={{ height: 480, boxShadow: 'var(--shadow-lg)' }}>
+          <div className="reveal rounded-2xl overflow-hidden mb-20" style={{ height: 480, boxShadow: 'var(--shadow-lg)' }}>
             <iframe
               title="Mappa Villa Lamberti"
               src="https://maps.google.com/maps?q=Villa+Lamberti,+Monte+di+Procida,+NA&output=embed&zoom=17&hl=it"

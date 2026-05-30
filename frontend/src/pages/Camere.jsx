@@ -72,23 +72,17 @@ export default function Camere() {
         scene="scene-sea"
       />
 
-      <section className="section" style={{ background: '#fff' }}>
-        <div className="container">
-          {rooms.map(({ slug, photoId, scene, badge, name, price, desc, detail, amenities }, i) => (
-            <div
-              key={name}
-              className={`reveal grid lg:grid-cols-2 gap-14 items-center ${i < rooms.length - 1 ? 'pb-20 mb-20' : ''}`}
-              style={i < rooms.length - 1 ? { borderBottom: '1px solid var(--c-border)' } : {}}
-            >
+      {rooms.map(({ slug, photoId, scene, badge, name, price, desc, detail, amenities }, i) => (
+        <section key={name} className="section" style={{ background: i % 2 === 0 ? '#fff' : 'var(--c-bg)' }}>
+          <div className="container">
+            <div className={`reveal grid lg:grid-cols-2 gap-14 items-center`}>
               {/* Photo */}
               <div className={`relative rounded-2xl overflow-hidden ${i % 2 === 1 ? 'lg:order-2' : ''}`}
                 style={{ height: 500, boxShadow: 'var(--shadow-lg)' }}>
                 <Photo id={photoId} alt={name} scene={scene} />
-                {/* Badge overlay */}
                 <span className="pill absolute top-5 left-5" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', color: 'var(--c-ocean)', fontWeight: 600 }}>
                   {badge}
                 </span>
-                {/* Price overlay */}
                 <div style={{ position: 'absolute', bottom: 20, right: 20, background: 'rgba(14,29,40,0.82)', backdropFilter: 'blur(8px)', borderRadius: 'var(--r-md)', padding: '8px 16px' }}>
                   <p style={{ fontFamily: 'var(--ff-display)', fontSize: '1.1rem', fontWeight: 400, color: '#fff', lineHeight: 1 }}>{price}</p>
                 </div>
@@ -104,7 +98,6 @@ export default function Camere() {
                   {detail}
                 </p>
 
-                {/* Amenities con icone */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 16px', marginBottom: 32 }}>
                   {amenities.map(({ icon, label }) => (
                     <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -123,9 +116,9 @@ export default function Camere() {
                 </Link>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      ))}
 
       {/* Info strip */}
       <section className="section--xs section--bg">
