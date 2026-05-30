@@ -604,6 +604,29 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 
 /* ─────────────────────────────────────────
+   FOOTER GRID
+───────────────────────────────────────── */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.4fr;
+  gap: 48px 40px;
+}
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 32px;
+  }
+  .footer-grid > div:first-child { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .footer-grid > div:first-child { grid-column: span 1; }
+}
+
+/* ─────────────────────────────────────────
    SCROLLBAR
 ───────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
